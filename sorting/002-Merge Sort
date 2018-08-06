@@ -54,3 +54,6 @@ public class MergeSort {
 	}
 
 }
+
+time = O(n+logn = nlogn)
+space = O(n)
