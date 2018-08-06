@@ -6,7 +6,7 @@ public class MergeSort {
 		mergeSort(arr, temp, 0, arr.length-1);
 		return arr;
 	}
-	private void mergeSort(int[] arr, int[] temp,int left,int right){
+        public void mergeSort(int[] arr, int[] temp,int left,int right){
 		if(left < right){
 			int center = left + (right-left)/2;
 			mergeSort(arr, temp, left, center);
@@ -14,7 +14,7 @@ public class MergeSort {
 			merge(arr, temp, left, center+1, right);
 		}
 	}
-	private void merge(int[] arr, int[] temp, int left, int right, int rightEnd){
+	public void merge(int[] arr, int[] temp, int left, int right, int rightEnd){
 		int leftEnd = right - 1;
 		int k = left;
 		int num = rightEnd - left + 1;
@@ -48,12 +48,18 @@ public class MergeSort {
 		// TODO Auto-generated method stub
 		MergeSort ob = new MergeSort();
 		int[] arr = {12,11,13,5,6,7};
+		int n = arr.length;
+		
+		
 		ob.mergeSort(arr);
 		System.out.println("Sorted array");
 		ob.printArray(arr);
 	}
 
 }
+
+
+
 
 time = O(n+logn = nlogn)
 space = O(n)
