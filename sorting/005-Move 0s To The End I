@@ -11,14 +11,14 @@ public class moveZero{
       }else if(array[right] == 0){
         right--;
       }else{
-        swap(array, left, right);
+        swap(array, left++, right--);
       }
     }
     return array;
   }
   private void swap(int[] array, int a, int b){
     int temp = array[a];
-    array = array[b];
+    array[a] = array[b];
     array[b] = temp;
   }
   public static void main(String[] args){
