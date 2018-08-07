@@ -1,0 +1,19 @@
+public class FibonacciNumber{
+  public long fibonacci(int k){
+    if(k <=1){
+      return 0;
+    }
+    long[] array = new long[k+1];
+    array[1] = 1;
+    for (int i = 2; i <= k; i++){
+      array[k + 2] = array[k] + array[k+1];
+    }
+    return array[k];
+  }
+  public static void main(String[] args){
+    FibonacciNumber ob = new FibonacciNumber();
+    int n;
+    System.out.print(ob.fibonacci(n));
+  }
+}
+
