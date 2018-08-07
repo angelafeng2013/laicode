@@ -1,0 +1,32 @@
+package laioffer;
+
+public class BinarySearch{
+  public int binarySearch(int[] array, int target){
+    if(array == null || array.length == 0){
+      return -1;
+    }
+    
+    int left = 0;
+    int right = array.length - 1;
+    int mid;
+    while (left <= right){
+      mid = left + (right - left) / 2;
+      if(array[mid] == target){
+        return mid;
+      }else if(array[mid] < target){
+        left = mid + 1;
+      }else{
+        right = mid - 1;
+      }
+    }
+    return -1;
+  }
+  public static void main(String[] args){
+    BinarySearch ob = new BinarySearch();
+    int[] array = {1,1,1,2,2,3,3,4,5};
+    int target = 2;
+    System.out.print(ob.binarySearch(array,target));
+  }
+}
+
+time = O(log(n))
