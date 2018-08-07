@@ -1,0 +1,27 @@
+package laioffer;
+
+public class power {
+
+	public long Power(int a, int b) {
+		if (b == 0)
+			return 1;
+
+		long halfresult = Power(a, b / 2);
+		if (b % 2 == 1)
+			return halfresult * halfresult * a;
+		else
+			return halfresult * halfresult;
+	}
+
+	public static void main(String[] args) {
+		power ob = new power();
+		int a = 2, b=3;
+		System.out.print(ob.Power(a, b));
+
+	}
+
+}
+
+
+time = O(log(b));
+space = O(log(b));
