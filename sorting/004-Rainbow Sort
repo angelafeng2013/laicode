@@ -23,18 +23,16 @@ public class RainbowSort{
     arr[b] = temp;
   }
   public static void main(String[] args) {
-			  		// TODO Auto-generated method stub
-					RainbowSort ob = new RainbowSort();
-					int[] arr= {1, 0, 1, -1, 0};
-					int n = arr.length;
-					ob.rainbowSort(arr);
+    RainbowSort ob = new RainbowSort();
+    int[] arr= {1, 0, 1, -1, 0};
+    int n = arr.length;
+    ob.rainbowSort(arr);
+    System.out.print("Rianbow sort is: ");
+    for(int i = 0; i < n; ++i){
+      System.out.print(arr[i]);
+    }
 					
-				    System.out.print("Rianbow sort is: ");
-				    for(int i = 0; i < n; ++i){
-				    	System.out.print(arr[i]);
-				    }
-					
-				}
+  }
 }
 time = O(n+k);
 space= O(n+k);
