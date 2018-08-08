@@ -36,3 +36,5 @@ public class searchM {
 		
 	}
 }
+
+time: O(log row + log col)
