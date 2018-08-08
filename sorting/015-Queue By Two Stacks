@@ -1,0 +1,55 @@
+package laioffer;
+
+//Java: Implement a queue by using two stacks. 
+//The queue should provide size(), isEmpty(), offer(), poll() and peek() operations. 
+//When the queue is empty, poll() and peek() should return nul
+		
+import java.util.LinkedList;
+public class Queue{
+  private LinkedList<Integer> in;
+  private LinkedList<Integer> out;
+  public Queue(){
+    in = new LinkedList<Integer>();
+    out = new LinkedList<Integer>();
+  }
+  public void offer(int element){
+    in.offerFirst(element);
+  }
+  public Integer poll(){
+    move();
+    return out.isEmpty()? null:out.pollFirst();
+  }
+  public Integer peek(){
+    move();
+    return out.isEmpty()? null : out.peekFirst();
+  }
+  public void move(){
+    if(out.isEmpty()){
+      while(!in.isEmpty()){
+        out.offerFirst(in.pollFirst());
+      }
+    }
+  }
+  public boolean isEmpty(){
+    return in.size() == 0 && out.size() == 0;
+  }
+  public int size(){
+    return in.size() + out.size();
+  }
+  public static void main(String[] args){
+    Queue q = new Queue();
+		q.offer(1);
+		q.offer(2);
+		q.offer(3);
+		System.out.println(q.size());
+		System.out.println(q.peek());
+		System.out.println(q.poll());
+		q.offer(4);
+		System.out.println(q.peek());
+		System.out.println(q.isEmpty());
+  }
+  
+}
+
+time: O(1)
+space:  O()
