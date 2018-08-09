@@ -1,0 +1,30 @@
+//Reverse a singly-linked list.
+
+/**
+ * class ListNode {
+ *   public int value;
+ *   public ListNode next;
+ *   public ListNode(int value) {
+ *     this.value = value;
+ *     next = null;
+ *   }
+ * }
+ */
+public class Solution {
+  public ListNode reverse(ListNode head) {
+    if(head == null || head.next == null){
+    	 return head;
+    }
+    ListNode prev = null, cur = head, next = null;
+    while (cur != null){
+      next = cur.next;
+      cur.next = prev;
+      prev = cur;
+      cur = next;
+    }
+    return prev;
+    // Write your solution here
+  }
+}
+time=O(1)
+space= O(n)
