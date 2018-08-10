@@ -1,0 +1,58 @@
+//Implement an iterative, post-order traversal of a given binary tree, 
+//return the list of keys of each node in the tree as it is post-order traversed.
+
+/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public List<Integer> postOrder(TreeNode root) {
+    List<Integer> result = new ArrayList<Integer>();
+     if(root == null) return result;
+    Deque<TreeNode> preorder = new LinkedList<TreeNode>();
+   
+    preorder.offerFirst(root);
+    while(!preorder.isEmpty()){
+    	TreeNode cur = preorder.pollFirst();
+      result.add(cur.key);
+      if(cur.left != null) {
+        preorder.offerFirst(cur.left);
+      }
+      if(cur.right != null) {
+      	preorder.offerFirst(cur.right);
+      }
+    }
+    Collections.reverse(result);
+    return result;
+  }
+}
+time = O(n)
+
+/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public List<Integer> postOrder(TreeNode root) {
+    // Write your solution here
+    List<Integer> postorder = new ArrayList<>();
+    if (root != null){
+      postorder.addAll(postOrder(root.left));
+      postorder.addAll(postOrder(root.right));
+      postorder.add(root.key);
+    }
+    return postorder;
+  }
+}
