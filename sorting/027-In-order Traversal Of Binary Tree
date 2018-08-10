@@ -1,0 +1,59 @@
+//Implement an iterative, in-order traversal of a given binary tree, 
+//return the list of keys of each node in the tree as it is in-order traversed.
+
+/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public List<Integer> inOrder(TreeNode root) {
+    List<Integer> inorder = new ArrayList<Integer>();
+    Deque<TreeNode> stack = new LinkedList<TreeNode>();
+    TreeNode cur = root;
+    while (cur != null || !stack.isEmpty()){
+    	if(cur != null){
+      	stack.offerFirst(cur);
+        cur = cur.left;
+      }else{
+      	cur = stack.pollFirst();
+        inorder.add(cur.key);
+        cur = cur.right;
+      }
+    }
+    return inorder;
+    // Write your solution here
+  }
+}
+
+Time Complexity: O(n)
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+public class Solution {
+  public List<Integer> inorderTraversal(TreeNode root) {
+    // Write your solution here
+    List<Integer> inorder = new ArrayList<Integer>();
+    if(root != null) {
+      inorder.addAll(inorderTraversal(root.left));
+      inorder.add(root.val);
+      inorder.addAll(inorderTraversal(root.right));
+    }
+    return inorder;
+    
+      
+  }
+}
