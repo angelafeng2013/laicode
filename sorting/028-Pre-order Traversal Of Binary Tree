@@ -1,0 +1,62 @@
+//Implement an iterative, pre-order traversal of a given binary tree, 
+//return the list of keys of each node in the tree as it is pre-order traversed.
+
+/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public List<Integer> preOrder(TreeNode root) {
+    List<Integer> preorder = new ArrayList<Integer>();
+    Deque<TreeNode> stack = new LinkedList<TreeNode>();
+    if (root == null){
+    return preorder;
+    }
+    stack.offerFirst(root);
+    while (!stack.isEmpty()){
+        TreeNode cur = stack.pollFirst();
+        if(cur.right != null){
+            stack.offerFirst(cur.right);
+        }
+        if(cur.left != null){
+        		stack.offerFirst(cur.left);
+        }
+      preorder.add(cur.key);
+      
+    
+    }
+    return preorder;
+  }
+}
+
+time=O(n)
+
+
+/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public List<Integer> preOrder(TreeNode root) {
+    // Write your solution here
+    List<Integer> preorder = new ArrayList<Integer>();
+    if( root != null){
+      preorder.add(root.key);
+      preorder.addAll(preOrder(root.left));
+      preorder.addAll(preOrder(root.right));
+    }
+    return preorder;
+  }
+}
