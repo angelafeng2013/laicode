@@ -42,3 +42,4 @@ public class Solution {
   
  }
                                                        
+time = O(k* log k)
