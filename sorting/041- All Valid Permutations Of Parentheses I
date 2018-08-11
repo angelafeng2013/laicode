@@ -1,0 +1,68 @@
+//Given N pairs of parentheses “()”, return a list with all the valid permutations.
+//Examples
+
+//N = 1, all valid permutations are ["()"]
+//N = 3, all valid permutations are ["((()))", "(()())", "(())()", "()(())", "()()()"]
+//N = 0, all valid permutations are [""]
+//the number of "(" must more than the number of ")"
+
+public class Solution {
+  public List<String> validParentheses(int n) {
+    List<String> result = new ArrayList<String>();
+    char[] cur = new char[n * 2];
+    helper(cur, n, n, 0, result);
+    return result;
+  }  
+    //l is how many left ( we still have
+  //r is how many right ) we still have
+  
+    private void helper(char[] cur, int left, int right, int index, List<String> result){
+      if (left == 0 && right == 0){
+        result.add(new String(cur));
+        return;
+      }
+      if(left > 0){
+        cur[index] = '(';
+        helper(cur, left - 1 , right, index + 1, result);
+      }
+      if(right > left){
+        cur[index] = ')';
+        helper(cur, left ,right -1,index + 1, result);
+      }
+      
+    }
+   
+  
+}
+
+
+//2.
+public class Solution {
+  public List<String> validParentheses(int n) {
+    // Write your solution here
+    List<String> result = new ArrayList<String>();
+    char[] cur = new char[n * 2];
+    StringBuilder solutionPrefix = new StringBuilder();
+    DFS(cur,n, 0, 0, solutionPrefix,result);
+    return result;
+  }
+
+  
+  private void DFS(char[] cur,int n, int l ,int r,StringBuilder sp, List<String> result){
+    if(l == n && r == n){
+      result.add(sp.toString());
+      return;
+    }
+    if(n > l){
+      sp.append('(');
+      
+      DFS(cur, n, l + 1, r, sp, result);
+      sp.deleteCharAt(sp.length() -1);
+    }
+    if(l > r){
+      sp.append(')');
+      DFS(cur, n, l, r + 1,  sp, result);
+      sp.deleteCharAt(sp.length() -1);
+    }
+  }
+}
