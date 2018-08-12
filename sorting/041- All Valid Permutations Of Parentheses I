@@ -66,3 +66,5 @@ public class Solution {
     }
   }
 }
+
+time = O(2^(2n))
