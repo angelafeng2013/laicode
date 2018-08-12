@@ -36,3 +36,4 @@ public class Solution {
     array[right] = tmp;
   }
 }
+time=O(n!)
