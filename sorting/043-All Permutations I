@@ -37,3 +37,31 @@ public class Solution {
   }
 }
 time=O(n!)
+
+//javascript
+
+var permute = function(nums) {
+    // backtrack
+    var list = [];
+    permuteHelper(list, nums, 0);
+    return list;
+};
+
+function permuteHelper(result, list, left){
+    if(left >= list.length - 1){
+        // shallow copy array
+        result.push(list.slice());
+    }else{
+        for(var i = left; i < list.length; i++){
+            swap(list, i, left);
+            permuteHelper(result, list, left + 1);
+            swap(list, i, left);
+        }
+    }
+}
+
+function swap(list, a, b){
+    var temp = list[a];
+    list[a] = list[b];
+    list[b] = temp;
+}
