@@ -1,0 +1,3 @@
+//Given an original string input, and two strings S and T, replace all occurrences of S in input with T.
+//input = "appledogapple", S = "apple", T = "cat", input becomes "catdogcat"
+
