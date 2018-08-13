@@ -1,0 +1,80 @@
+//Given a string with possible duplicate characters, return a list with all permutations of the characters.
+//Set = “abc”, all permutations are [“abc”, “acb”, “bac”, “bca”, “cab”, “cba”]
+
+public class Solution {
+  public List<String> permutations(String set) {
+    List<String> result = new ArrayList<String>();
+    if(set == null){
+    	return result;
+    }
+    char[] array = set.toCharArray();
+    helper(array, 0, result);
+    return result;
+  }
+  private void helper(char[] array, int index, List<String> result){
+  	if(index == array.length){
+    	result.add(new String(array));
+      return;
+    }
+    Set<Character> used = new HashSet<Character>();
+    for(int i = index; i < array.length; i ++){
+    	if(used.add(array[i])){
+       swap(array, i, index);
+       helper(array, index + 1, result);
+       swap(array, i, index);
+      }
+    }
+  }
+  private void swap(char[] array, int left, int right){
+  	char tmp = array[left];
+    array[left] = array[right];
+    array[right] = tmp;
+  }
+}
+
+
+//javascript
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var permuteUnique = function(nums) {
+    
+    let res = [];
+    let map = {};
+    let n = nums.length;
+    
+    util([], []);
+    
+    return res;
+    
+    function util(arr, iarr){
+        
+        if(arr.length >= n){
+            if(!map[arr]){
+                map[arr] = true;
+                res.push(arr.slice());
+            }
+            
+            return;
+        }
+        
+        for(let i = 0; i < nums.length; i++){
+            
+            if(iarr.includes(i)){
+               continue;
+            }
+            
+            arr.push(nums[i]);
+            iarr.push(i);
+            
+            util(arr, iarr);
+            
+            arr.pop();
+            iarr.pop();
+        }
+        
+    }
+    
+};
